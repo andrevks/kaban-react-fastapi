@@ -28,8 +28,8 @@ function Board(props) {
 
         console.log('source',source);
         console.log('dest',destination);
-        console.log(draggableId);
-        console.log('type:',type,'is equal to column? ',type === 'column');
+        console.log('draggalbleId:',draggableId);
+        console.log('type:',type);
 
         if(!destination){
             return;
@@ -42,16 +42,63 @@ function Board(props) {
 
         if (type === 'column'){
             const newColumnOrder = Array.from(board.columnOrder);
-            console.log('newCol', newColumnOrder)
             newColumnOrder.splice(source.index, 1);
             newColumnOrder.splice(destination.index, 0, draggableId);
-            console.log('After newCol', newColumnOrder)
             setBoard({
                 ...board,
                 columnOrder: newColumnOrder
             })
             return;
         }
+
+        const start = board.columns[source.droppableId];
+        const finish = board.columns[destination.droppableId];
+
+        if (start === finish){
+            const newTaskIds = Array.from(start.taskIds);
+            newTaskIds.splice(source.index, 1);
+            newTaskIds.splice(destination.index, 0, draggableId);
+
+            const newColumn = {
+                ...start,
+                taskIds: newTaskIds
+            }
+
+            setBoard({
+                ...board,
+                columns: {
+                    ...board.columns,
+                    [newColumn.id]: newColumn
+                }
+            });
+            return;
+        }
+
+        const startTaskIds = Array.from(start.taskIds);
+        startTaskIds.splice(source.index,1);
+        const newStartColumn = {
+           ...start,
+           taskIds: startTaskIds
+        }
+
+        const finishTaskIds = Array.from(finish.taskIds);
+        finishTaskIds.splice(destination.index, 0, draggableId);
+
+        const newFinishColumn = {
+            ...finish,
+            taskIds: finishTaskIds
+        }
+
+        setBoard({
+            ...board,
+            columns: {
+                ...board.columns,
+                [newStartColumn.id]: newStartColumn,
+                [newFinishColumn.id]: newFinishColumn
+            }
+        });
+        return;
+
     }
 
     return (
@@ -62,7 +109,7 @@ function Board(props) {
                         {
                             board.columnOrder.map((columnId, index) => {
                                 const column = board.columns[columnId];
-                                const tasks = column.tasksId.map(taskId => board.tasks[taskId]);
+                                const tasks = column.taskIds.map(taskId => board.tasks[taskId]);
                                 return <Column key={column.id} column={column} tasks={tasks} index={index}/>;
                             })
                         }
