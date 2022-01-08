@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Column from "./Column";
 
@@ -12,7 +13,6 @@ function Board(props) {
 
     useEffect(() =>{
         fetchBoard().then(data => {
-            // console.log(data);
             setBoard(data);
         });
     }, []);
@@ -23,17 +23,27 @@ function Board(props) {
         return data.board;
     }
 
-    return (
-        <Container>
+    function onDragEnd(){
+        alert('dropped');
+    }
 
-            {
-                board.columnOrder.map((columnId, index) => {
-                    const column = board.columns[columnId];
-                    const tasks = column.tasksId.map(taskId => board.tasks[taskId]);
-                    return <Column key={column.id} column={column} tasks={tasks} index={index}/>;
-                })
-            }
-        </Container>
+    return (
+        <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="all-columns" direction="horizontal" type="column">
+                {provided =>(
+                    <Container {...provided.droppableProps} ref={provided.innerRef}>
+                        {
+                            board.columnOrder.map((columnId, index) => {
+                                const column = board.columns[columnId];
+                                const tasks = column.tasksId.map(taskId => board.tasks[taskId]);
+                                return <Column key={column.id} column={column} tasks={tasks} index={index}/>;
+                            })
+                        }
+                    {provided.placeholder}
+                    </Container>
+                )}
+            </Droppable>
+        </DragDropContext>
     )
 }
 
