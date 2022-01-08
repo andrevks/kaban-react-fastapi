@@ -247,7 +247,7 @@ env3.*
 env
 docs_build
 *.venv
-.venv
+venv
 **venv
 docs.zip
 archive.zip
