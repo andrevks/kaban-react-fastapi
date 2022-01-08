@@ -23,13 +23,40 @@ function Board(props) {
         return data.board;
     }
 
-    function onDragEnd(){
-        alert('dropped');
+    function onDragEnd(result){
+        const { destination, source, draggableId, type } = result;
+
+        console.log('source',source);
+        console.log('dest',destination);
+        console.log(draggableId);
+        console.log('type:',type,'is equal to column? ',type === 'column');
+
+        if(!destination){
+            return;
+        }
+
+        if(destination.droppableId === source.droppableId && destination.index === source.index){
+            return;
+        }
+
+
+        if (type === 'column'){
+            const newColumnOrder = Array.from(board.columnOrder);
+            console.log('newCol', newColumnOrder)
+            newColumnOrder.splice(source.index, 1);
+            newColumnOrder.splice(destination.index, 0, draggableId);
+            console.log('After newCol', newColumnOrder)
+            setBoard({
+                ...board,
+                columnOrder: newColumnOrder
+            })
+            return;
+        }
     }
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="all-columns" direction="horizontal" type="column">
+            <Droppable style={{ transform: "none" }} droppableId="all-columns" direction="horizontal" type="column">
                 {provided =>(
                     <Container {...provided.droppableProps} ref={provided.innerRef}>
                         {

@@ -29,15 +29,15 @@ function Column(props) {
             {provided => (
                 <Container {...provided.draggableProps} ref={provided.innerRef}>
                     <Title {...provided.dragHandleProps} >{props.column.title}</Title>
-                    <Droppable droppableId={props.column.id} type="task" >
+                    <Droppable droppableId={props.column.id}  type="task" >
                         {provided => (
                             <TaskList {...provided.droppableProps} ref={provided.innerRef}>
                                 {
                                     props.tasks.map((task, index) =>
-                                        (<Task key={task.id} task={task} index={task} columnId={props.column.id}/>)
+                                        (<Task key={task.id} task={task} index={index} columnId={props.column.id}/>)
                                     )
                                 }
-                            {provided.placeholder}
+                                {provided.placeholder}
                             </TaskList>
                         )}
                     </Droppable>
