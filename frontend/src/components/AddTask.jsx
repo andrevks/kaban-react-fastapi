@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function AddTask(props){
     const [showNewTaskButton, setShowNewTaskButton] = useState(true);
     const [value, setValue] = useState("");
-    function handleInputChange(e){
+    function handleInputChange(){
         if (value){
             setShowNewTaskButton(true);
             addNewTask(props.columnId, value)
