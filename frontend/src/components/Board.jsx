@@ -19,7 +19,7 @@ function Board(props) {
     }, []);
 
     async function fetchBoard() {
-        const response = await fetch('/board');
+        const response = await fetch('/boards');
         const data = await response.json();
         return data.board;
     }
@@ -27,10 +27,6 @@ function Board(props) {
     function onDragEnd(result){
         const { destination, source, draggableId, type } = result;
 
-        console.log('source',source);
-        console.log('dest',destination);
-        console.log('draggalbleId:',draggableId);
-        console.log('type:',type);
 
         if(!destination){
             return;
