@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from model.models import User, Board
+from model.models import Board, User
 
 router = APIRouter(
     prefix='/boards',
@@ -17,5 +17,5 @@ async def save_board(board: Board):
     user = await User.get(id=1)
     user.board = board.json()
     await user.save()
-    return {"status": "success"}
+    return user.board
 

@@ -24,6 +24,24 @@ function Board(props) {
         return data.board;
     }
 
+    useEffect(() => {
+        saveBoard();
+    }, [board]);
+
+    async function saveBoard(){
+        const response = await fetch('/boards', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(board),
+        });
+        const data = await response.json();
+        // console.log(`BOARD: ${board}`)
+        // console.log("board: ", board);
+    }
+
+
     function onDragEnd(result){
         const { destination, source, draggableId, type } = result;
 

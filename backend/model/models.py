@@ -1,7 +1,6 @@
 from pydantic import BaseModel
-from tortoise import fields
-from tortoise.contrib.pydantic import pydantic_model_creator
 from tortoise.models import Model
+from tortoise import fields
 
 
 class Task(BaseModel):
@@ -34,5 +33,3 @@ class User(Model):
     password = fields.CharField(200)
     board = fields.JSONField(default={"tasks": {}, "columns": {}, "columnOrder": []} )
 
-User_pydantic = pydantic_model_creator(User, name="User")
-UserIn_pydantic = pydantic_model_creator(User, name="UserIn", exclude_readonly=True, exclude=('board',))
