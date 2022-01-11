@@ -10,7 +10,7 @@ def get_board():
             'task-1': {'id': 'task-1', 'content': 'Watch a video about fastapi' },
             'task-2': {'id': 'task-2', 'content': 'Create the project using fastapi'},
             'task-3': {'id': 'task-3', 'content': 'Deploy your restful api'},
-            'task-4': {'id': 'task-4' , 'content': 'Write the README' }
+            'task-4': {'id': 'task-4', 'content': 'Write the README' }
         },
         'columns': {
             'column-1': {

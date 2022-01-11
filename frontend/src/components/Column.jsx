@@ -44,9 +44,10 @@ function Column(props) {
             tasks: finalTasks,
             columns: newColumns,
             columnOrder: newColumnOrder
-        }
+        };
         props.setBoard(newBoard);
     }
+
     return (
         <Draggable draggableId={props.column.id} index={props.index}>
             {provided => (
@@ -60,7 +61,8 @@ function Column(props) {
                             <TaskList {...provided.droppableProps} ref={provided.innerRef}>
                                 {
                                     props.tasks.map((task, index) =>
-                                        (<Task key={task.id} task={task} index={index} columnId={props.column.id}/>)
+                                        (<Task key={task.id} task={task} index={index} columnId={props.column.id}
+                                        board={props.board} setBoard={props.setBoard}/>)
                                     )
                                 }
                                 {provided.placeholder}
