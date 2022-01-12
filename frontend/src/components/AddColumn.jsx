@@ -36,12 +36,13 @@ function AddColumn(props){
         props.setBoard(newBoard);
     }
     return (
-        <div>
+        <div className="fixed right-5 bg-green-300 px-1.5">
         {
 
             showNewColumnButton ?
                 <button onClick={() => setShowNewColumnButton(false)}>New Column</button>:
-                <input type="text" value={value} onChange={event => setValue(event.target.value)}
+                <input className="bg-inherit"
+                    type="text" value={value} onChange={event => setValue(event.target.value)}
                        onBlur={handleInputChange}/>
 
         }

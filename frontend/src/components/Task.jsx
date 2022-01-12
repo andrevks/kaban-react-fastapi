@@ -1,13 +1,11 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import { IoIosClose }  from "react-icons/io";
+import {IconContext} from "react-icons";
 
 const Container = styled.div`
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 8px;
-    margin-bottom: 8px;
-    background-color: #FEEFDD;
+
 `;
 
 function Task(props) {
@@ -39,14 +37,28 @@ function Task(props) {
     }
 
     return (
-        <Draggable draggableId={props.task.id} index={props.index}>
-            {provided => (
-                <Container {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                    {props.task.content}
-                    <span onClick={()=> deleteTask(props.columnId, props.index, props.task.id)}>  (x)</span>
-                </Container>
-            )}
-        </Draggable>
+
+            <Draggable draggableId={props.task.id} index={props.index}>
+                {provided => (
+                        <Container className="bg-white mb-5 p-1 rounded-md border"
+                                   {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                            <div>
+                                {
+                                    props.task.content
+                                }
+                                <IconContext.Provider
+                                    value={{color:'red', size: '15'}}>
+
+                                    <button className="ml-2 m-0 p-0"
+                                            onClick={()=> deleteTask(props.columnId, props.index, props.task.id)}>
+                                        <IoIosClose/>
+                                    </button>
+
+                                </IconContext.Provider>
+                            </div>
+                        </Container>
+                )}
+            </Draggable>
     )
 }
 

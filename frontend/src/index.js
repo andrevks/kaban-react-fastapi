@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Board from "./components/Board";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import './App.css';
+import styles from './index.css'
+// import './index.css';
 
 function getToken(){
     const tokenString = localStorage.getItem('token');

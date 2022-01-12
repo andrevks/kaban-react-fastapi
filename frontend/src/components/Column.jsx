@@ -3,17 +3,10 @@ import styled from "styled-components";
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import Task from "./Task";
 import AddTask from "./AddTask";
+import {IconContext} from "react-icons";
+import {AiOutlineDelete} from "react-icons/ai";
 
 const Container = styled.div`
-     margin: 8px;
-     border: 1px solid black;
-     border-radius: 5px;
-     width: 200px;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     padding-bottom: 10px;
-     background-color: #50B2C0;
 `;
 
 const Title = styled.h3`
@@ -21,7 +14,6 @@ const Title = styled.h3`
 `;
 
 const TaskList = styled.div`
-    padding: 8px;
 `;
 
 function Column(props) {
@@ -49,30 +41,43 @@ function Column(props) {
     }
 
     return (
-        <Draggable draggableId={props.column.id} index={props.index}>
-            {provided => (
-                <Container {...provided.draggableProps} ref={provided.innerRef}>
-                    <Title {...provided.dragHandleProps} >
-                        {props.column.title}
-                        <span onClick={() => deleteColumn(props.column.id, props.index)}> (X)</span>
-                    </Title>
-                    <Droppable droppableId={props.column.id}  type="task" >
-                        {provided => (
-                            <TaskList {...provided.droppableProps} ref={provided.innerRef}>
-                                {
-                                    props.tasks.map((task, index) =>
-                                        (<Task key={task.id} task={task} index={index} columnId={props.column.id}
-                                        board={props.board} setBoard={props.setBoard}/>)
-                                    )
-                                }
-                                {provided.placeholder}
-                                <AddTask columnId={props.column.id} board={props.board} setBoard={props.setBoard}  />
-                            </TaskList>
-                        )}
-                    </Droppable>
-                </Container>
-            )}
-        </Draggable>
+
+            <Draggable draggableId={props.column.id} index={props.index}>
+                {provided => (
+                    <Container className="bg-inherit p-5"
+                        {...provided.draggableProps} ref={provided.innerRef}>
+                        <Title className="text-metal font-bold"
+                            {...provided.dragHandleProps} >
+                            {props.column.title}
+
+                            <IconContext.Provider
+                                value={{color:'red', size: '15'}}>
+                                <button className="ml-2 m-0 p-0 bg-inherit "
+                                        onClick={() => deleteColumn(props.column.id, props.index)}>
+                                    <AiOutlineDelete className="ml-5 "/>
+                                </button>
+
+                            </IconContext.Provider>
+                        </Title>
+
+                        <Droppable droppableId={props.column.id}  type="task" >
+                            {provided => (
+                                <TaskList className="bg-metal pt-3 px-1.5 rounded-md"
+                                    {...provided.droppableProps} ref={provided.innerRef}>
+                                    {
+                                        props.tasks.map((task, index) =>
+                                            (<Task key={task.id} task={task} index={index} columnId={props.column.id}
+                                            board={props.board} setBoard={props.setBoard}/>)
+                                        )
+                                    }
+                                    {provided.placeholder}
+                                    <AddTask columnId={props.column.id} board={props.board} setBoard={props.setBoard}  />
+                                </TaskList>
+                            )}
+                        </Droppable>
+                    </Container>
+                )}
+            </Draggable>
     )
 }
 
