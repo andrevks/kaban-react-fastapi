@@ -19,13 +19,19 @@ function Board(props) {
     }, []);
 
     async function fetchBoard() {
-        const response = await fetch('/boards');
+        const response = await fetch('/boards', {
+            headers: {
+                "Authorization": "Bearer " + props.token
+            }
+        });
         const data = await response.json();
         return data.board;
     }
 
     useEffect(() => {
-        saveBoard();
+        if(board !== initialData){
+            saveBoard();
+        }
     }, [board]);
 
     async function saveBoard(){
@@ -33,8 +39,9 @@ function Board(props) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                "Authorization": "Bearer " + props.token
             },
-            body: JSON.stringify(board),
+            body: JSON.stringify(board)
         });
         const data = await response.json();
         // console.log(`BOARD: ${board}`)

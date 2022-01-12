@@ -9,14 +9,21 @@ router = APIRouter(
 
 
 @router.get('')
-async def get_board(): #user: User_Pydantic = Depends(get_current_user)
-    user = await User.get(id=2)
-    return {'board': user.board}
+async def get_board(user: User_Pydantic = Depends(get_current_user)):
+    try:
+        user_data = await User.get(id=user.id)
+        return {'board': user_data.board}
+    except Exception as e:
+        print(f"Error in getting board: {e}")
+        return {'msg': f'error: {e}'}
 
 @router.post('')
-async def save_board(board: Board):
-    user = await User.get(id=2)
-    user.board = board.json()
-    await user.save()
-    return user.board
-
+async def save_board(board: Board, user: User_Pydantic = Depends(get_current_user)):
+    try:
+        user_data = await User.get(id=user.id)
+        user_data.board = board.json()
+        await user_data.save()
+        return {"status": "success"}
+    except Exception as e:
+        print(f"Error in creating board: {e}")
+        return {'msg': f'error: {e}'}

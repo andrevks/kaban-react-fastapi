@@ -23,4 +23,5 @@ async def create_user(user_in: UserIn_Pydantic):
         token = jwt.encode(user_obj.dict() , JWT_SECRET)
         return { 'access_token': token }
     except Exception as e:
-        print(f"Error in creting user: {e}")
+        print(f"Error in creating user: {e}")
+        return {'msg': 'Username already exists.'}

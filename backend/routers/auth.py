@@ -17,6 +17,7 @@ async def generate_token(form_data: OAuth2PasswordRequestForm = Depends()):
                                         form_data.username,
                                         form_data.password
                                        )
+        print(f'generateToken: {user.board}')
         if not user:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,

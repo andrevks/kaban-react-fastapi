@@ -18,8 +18,9 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     try:
-        payload: jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
+        payload = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
         user = await User.get(id=payload.get('id'))
+        print(f'CURRENT USER: {user}')
     except:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

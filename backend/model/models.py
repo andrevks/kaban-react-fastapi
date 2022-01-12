@@ -33,7 +33,7 @@ class User(Model):
     id = fields.IntField(pk=True)
     username = fields.CharField(50, unique=True)
     password = fields.CharField(200)
-    board = fields.JSONField(default={"tasks": {}, "columns": {}, "columnOrder": []} )
+    board = fields.JSONField(default='{"tasks": {}, "columns": {}, "columnOrder": []}')
 
 
     def verify_password(self, password):
