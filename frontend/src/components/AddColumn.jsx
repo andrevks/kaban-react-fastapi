@@ -40,7 +40,7 @@ function AddColumn(props){
         {
 
             showNewColumnButton ?
-                <button onClick={() => setShowNewColumnButton(false)}>New</button>:
+                <button onClick={() => setShowNewColumnButton(false)}>New Column</button>:
                 <input type="text" value={value} onChange={event => setValue(event.target.value)}
                        onBlur={handleInputChange}/>
 

@@ -2,11 +2,20 @@ body {
     background-color: #201E1F;
 }
 
-p {
+p, h1 {
     color: whitesmoke;
 }
 
 form {
     border-radius: 5px;
     padding: 20px;
+}
+
+#login{
+    background-color: darkred;
+    color: whitesmoke;
+}
+
+button {
+    margin: 10px;
 }

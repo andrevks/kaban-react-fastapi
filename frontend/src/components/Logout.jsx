@@ -12,7 +12,7 @@ function Logout(props){
     }
 
     return (
-        <button onClick={logoutUser}>Log Out</button>
+        <button onClick={logoutUser} id="login">Log Out</button>
     )
 
 }

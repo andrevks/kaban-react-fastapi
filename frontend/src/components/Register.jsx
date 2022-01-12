@@ -45,7 +45,7 @@ function Register(props){
                 Username <input type="text" onChange={e => setUsername(e.target.value)}/>
             </p>
             <p>
-                Password <input type="text" onChange={e => setPassword(e.target.value)}/>
+                Password <input type="password" onChange={e => setPassword(e.target.value)}/>
             </p>
             <p>
                 <button>Register</button>
