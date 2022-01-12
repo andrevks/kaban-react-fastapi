@@ -1,8 +1,7 @@
 # Kanban - Full Application in React and FastAPI  
 
 
->This full stack application consist in a simple Trello clone with the 
-Kanban method using **React**, **FastAPI** and **PosgreSQL**.
+>This full stack application consist in Kanban Board using **React**, **FastAPI** and **PosgreSQL**.
 
 The app is able to make a user authentication and each user has their own
 board which is saved on the database. More importantly it has the feature of drag an drop, 
