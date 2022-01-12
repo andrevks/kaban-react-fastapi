@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Board from "./components/Board";
 import Register from "./components/Register";
+import Login from "./components/Login";
 import './App.css';
 
 function getToken(){
@@ -20,10 +21,11 @@ function App(){
                 <Route path='/' element=
                     {
                         !token?
-                        <Navigate to='/register'/> : <Board token={token}/>
+                        <Navigate to='/login'/> : <Board token={token}/>
                     }
                 />
                 <Route exact path={'/register'} element={<Register setToken={setToken}/>}/>
+                <Route exact path={'/login'} element={<Login setToken={setToken}/>}/>
             </Routes>
         </BrowserRouter>
     )

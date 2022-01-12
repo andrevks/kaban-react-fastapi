@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Register(props){
+function Login(props){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -9,7 +9,7 @@ function Register(props){
     function handleSubmit(e){
         e.preventDefault();
 
-        createUser().then(data => {
+        loginUser().then(data => {
             if(data.access_token){
                 props.setToken(data.access_token);
                 localStorage.setItem('token', JSON.stringify(data.access_token));
@@ -19,18 +19,17 @@ function Register(props){
 
     }
 
-    async function createUser(){
-        const formData = {
-            username: username,
-            password: password
-        };
+    async function loginUser(){
+        const searchParams= new URLSearchParams()
+        searchParams.append('username', username);
+        searchParams.append('password', password);
 
-        const response = await fetch('/users', {
+        const response = await fetch('/token', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: JSON.stringify(formData)
+            body: searchParams.toString()
         });
 
         const data = await response.json();
@@ -40,21 +39,21 @@ function Register(props){
 
     return (
         <form onSubmit={handleSubmit}>
-            <h1>Register</h1>
+            <h1>Login</h1>
             <p>
                 Username <input type="text" onChange={e => setUsername(e.target.value)}/>
             </p>
             <p>
-                Password <input type="text" onChange={e => setPassword(e.target.value)}/>
+                Password <input type="password" onChange={e => setPassword(e.target.value)}/>
             </p>
             <p>
-                <button>Register</button>
+                <button>Login</button>
             </p>
             <p>
-                Already have an account? <Link to='/login'>Login Here</Link>
+                Need a account? <Link to='/register'>Register Here</Link>
             </p>
         </form>
     )
 }
 
-export default Register;
+export default Login;
