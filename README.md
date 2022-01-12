@@ -11,7 +11,7 @@ allowing to create columns and tasks. As a result, it's extremely customizable.
 
 ![Gif Demo](https://i.giphy.com/media/AEAtNKhQfOydVm9Bsu/giphy.webp)
 
-###REST API Swagger Docs With FastAPI
+### REST API Swagger Docs With FastAPI
 
 
 ![rest_api_fastapi](https://user-images.githubusercontent.com/39144691/149065446-35a44954-5a80-441d-a094-0b66aa338bb4.png)
