@@ -9,8 +9,10 @@ allowing to create columns and tasks. As a result, it's extremely customizable.
 
 ## DEMO
 
+![kaban-board-print](https://user-images.githubusercontent.com/39144691/149261465-e5e53b98-40a6-44ea-976f-32fa3cf7557f.png)
 
 <img src="https://i.giphy.com/d8R6hPfMI1aTldwIsr.gif" width="660">
+
 
 ### REST API Swagger Docs With FastAPI
 
