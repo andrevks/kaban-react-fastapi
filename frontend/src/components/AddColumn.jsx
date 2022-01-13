@@ -6,7 +6,7 @@ function AddColumn(props){
     function handleInputChange(){
         if(value){
             setShowNewColumnButton(true);
-            addNewColumn(value)
+            addNewColumn(value.toUpperCase())
             setValue('');
             return;
         }
@@ -36,12 +36,13 @@ function AddColumn(props){
         props.setBoard(newBoard);
     }
     return (
-        <div>
+        <div className=" bg-green-300 px-2 py-1 rounded-md">
         {
 
             showNewColumnButton ?
                 <button onClick={() => setShowNewColumnButton(false)}>New Column</button>:
-                <input type="text" value={value} onChange={event => setValue(event.target.value)}
+                <input className="bg-inherit"
+                    type="text" value={value} onChange={event => setValue(event.target.value)}
                        onBlur={handleInputChange}/>
 
         }

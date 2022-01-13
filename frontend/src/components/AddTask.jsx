@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {IconContext} from "react-icons";
+import { FcPlus } from "react-icons/fc"
 
 function AddTask(props){
     const [showNewTaskButton, setShowNewTaskButton] = useState(true);
@@ -47,8 +49,16 @@ function AddTask(props){
         <div>
         {
             showNewTaskButton ?
-                <button onClick={() => setShowNewTaskButton(false)}>New</button>:
-                <input type="text" value={value} onChange={event => setValue(event.target.value)}
+
+                <IconContext.Provider value={{ size: '20'}}>
+                    <button
+                        onClick={() => setShowNewTaskButton(false)}>
+                       <FcPlus/>
+                    </button>
+                </IconContext.Provider> :
+
+                <input className="flex w-11/12 rounded-md"
+                    type="text" value={value} onChange={event => setValue(event.target.value)}
                  onBlur={handleInputChange}/>
         }
         </div>

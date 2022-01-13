@@ -38,7 +38,7 @@ function Login(props){
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="" onSubmit={handleSubmit}>
             <h1>Login</h1>
             <p>
                 Username <input type="text" onChange={e => setUsername(e.target.value)}/>
