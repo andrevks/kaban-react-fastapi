@@ -9,7 +9,7 @@ allowing to create columns and tasks. As a result, it's extremely customizable.
 
 ## DEMO
 
-![Gif Demo](https://i.giphy.com/media/AEAtNKhQfOydVm9Bsu/giphy.webp)
+![Gif Demo](https://i.giphy.com/d8R6hPfMI1aTldwIsr.gif)
 
 ### REST API Swagger Docs With FastAPI
 
