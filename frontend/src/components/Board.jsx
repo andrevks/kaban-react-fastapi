@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Column from "./Column";
 import AddColumn from "./AddColumn";
 import Logout from "./Logout";
+import AppBar from "./AppBar";
 
 const Container = styled.div`
 `;
@@ -124,26 +125,40 @@ function Board(props) {
     }
 
     return (
-            <DragDropContext onDragEnd={onDragEnd}>
-                <AddColumn board={board} setBoard={setBoard}/>
-                <Logout/>
-                <Droppable style={{ transform: "none" }} droppableId="all-columns" direction="horizontal" type="column">
-                    {provided =>(
-                        <Container className="flex bg-gray pb-50 "
-                            {...provided.droppableProps} ref={provided.innerRef}>
-                            {
-                                board.columnOrder.map((columnId, index) => {
-                                    const column = board.columns[columnId];
-                                    const tasks = column.taskIds.map(taskId => board.tasks[taskId]);
-                                    return <Column key={column.id} column={column} tasks={tasks} index={index}
-                                            board={board} setBoard={setBoard}/>;
-                                })
-                            }
-                        {provided.placeholder}
-                        </Container>
-                    )}
-                </Droppable>
-            </DragDropContext>
+
+            <div className="bg-gray min-h-screen ">
+                <AppBar/>
+
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <div className="flex flex-col justify-center items-center">
+
+                        <Droppable style={{ transform: "none" }} droppableId="all-columns" direction="horizontal" type="column">
+                            {provided =>(
+                                <Container
+                                    {...provided.droppableProps} ref={provided.innerRef}>
+                                    <div className="flex justify-between max-w-screen-xl items-center min-w-xs gap-8 mt-16 mb-4" >
+                                        <p className="font-bold">PROJECT NAME</p>
+                                        <AddColumn board={board} setBoard={setBoard}/>
+                                    </div>
+                                    <div className="flex flex-col gap-8 md:flex-row  max-w-screen-xl overflow-auto md:items-start
+                                    flex-1
+                                    ">
+                                        {
+                                            board.columnOrder.map((columnId, index) => {
+                                                const column = board.columns[columnId];
+                                                const tasks = column.taskIds.map(taskId => board.tasks[taskId]);
+                                                return <Column key={column.id} column={column} tasks={tasks} index={index}
+                                                        board={board} setBoard={setBoard}/>;
+                                            })
+                                        }
+                                        {provided.placeholder}
+                                    </div>
+                                </Container>
+                            )}
+                        </Droppable>
+                    </div>
+                </DragDropContext>
+            </div>
     )
 }
 

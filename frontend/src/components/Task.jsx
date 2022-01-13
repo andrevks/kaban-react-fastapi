@@ -40,16 +40,16 @@ function Task(props) {
 
             <Draggable draggableId={props.task.id} index={props.index}>
                 {provided => (
-                        <Container className="bg-white mb-5 p-1 rounded-md border"
+                        <Container className="relative bg-white mb-5 p-1 rounded-md border"
                                    {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                            <div>
+                            <div className="flex items-center justify-between">
                                 {
                                     props.task.content
                                 }
                                 <IconContext.Provider
                                     value={{color:'red', size: '15'}}>
 
-                                    <button className="ml-2 m-0 p-0"
+                                    <button
                                             onClick={()=> deleteTask(props.columnId, props.index, props.task.id)}>
                                         <IoIosClose/>
                                     </button>

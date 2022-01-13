@@ -6,7 +6,7 @@ function AddColumn(props){
     function handleInputChange(){
         if(value){
             setShowNewColumnButton(true);
-            addNewColumn(value)
+            addNewColumn(value.toUpperCase())
             setValue('');
             return;
         }
@@ -36,7 +36,7 @@ function AddColumn(props){
         props.setBoard(newBoard);
     }
     return (
-        <div className="fixed right-5 bg-green-300 px-1.5">
+        <div className=" bg-green-300 px-2 py-1 rounded-md">
         {
 
             showNewColumnButton ?

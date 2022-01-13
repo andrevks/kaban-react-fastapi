@@ -10,7 +10,6 @@ const Container = styled.div`
 `;
 
 const Title = styled.h3`
-    padding: 5px;
 `;
 
 const TaskList = styled.div`
@@ -44,25 +43,22 @@ function Column(props) {
 
             <Draggable draggableId={props.column.id} index={props.index}>
                 {provided => (
-                    <Container className="bg-inherit p-5"
+                    <Container className="flex flex-col bg-inherit "
                         {...provided.draggableProps} ref={provided.innerRef}>
+
                         <Title className="text-metal font-bold"
+
                             {...provided.dragHandleProps} >
                             {props.column.title}
 
-                            <IconContext.Provider
-                                value={{color:'red', size: '15'}}>
-                                <button className="ml-2 m-0 p-0 bg-inherit "
-                                        onClick={() => deleteColumn(props.column.id, props.index)}>
-                                    <AiOutlineDelete className="ml-5 "/>
-                                </button>
 
-                            </IconContext.Provider>
+
+
                         </Title>
 
                         <Droppable droppableId={props.column.id}  type="task" >
                             {provided => (
-                                <TaskList className="bg-metal pt-3 px-1.5 rounded-md"
+                                <TaskList className="flex-1 w-full bg-metal pt-3 px-1.5 rounded-md md:w-48 "
                                     {...provided.droppableProps} ref={provided.innerRef}>
                                     {
                                         props.tasks.map((task, index) =>
@@ -71,7 +67,20 @@ function Column(props) {
                                         )
                                     }
                                     {provided.placeholder}
-                                    <AddTask columnId={props.column.id} board={props.board} setBoard={props.setBoard}  />
+
+                                    <div className="flex items-center justify-between max-w-full pb-2">
+                                        <AddTask columnId={props.column.id} board={props.board} setBoard={props.setBoard}  />
+                                        <IconContext.Provider
+                                            value={{color:'red', size: '20'}}>
+
+                                            <button className="mb-1"
+                                                    onClick={() => deleteColumn(props.column.id, props.index)}>
+                                                <AiOutlineDelete className=""/>
+                                            </button>
+
+                                        </IconContext.Provider>
+                                    </div>
+
                                 </TaskList>
                             )}
                         </Droppable>

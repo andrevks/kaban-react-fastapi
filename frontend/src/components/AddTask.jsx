@@ -50,15 +50,14 @@ function AddTask(props){
         {
             showNewTaskButton ?
 
-
-                <IconContext.Provider value={{color:'red', size: '22'}}>
-                    <button className="ml-2 m-0 p-0"
+                <IconContext.Provider value={{ size: '20'}}>
+                    <button
                         onClick={() => setShowNewTaskButton(false)}>
                        <FcPlus/>
                     </button>
                 </IconContext.Provider> :
 
-                <input className="mb-5"
+                <input className="flex w-11/12 rounded-md"
                     type="text" value={value} onChange={event => setValue(event.target.value)}
                  onBlur={handleInputChange}/>
         }
