@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import background from "../asset/back.jpg";
+import Form from "./Form";
 
 function Login(props){
     const [username, setUsername] = useState('');
@@ -37,22 +39,20 @@ function Login(props){
 
     }
 
+    const cta= ['Project','managment', 'never been so'];
+    const ctaMain = 'EASY';
+    const msg = ['Need a ',' account?'];
+    const linkBtn = '/register';
+    const btnMsg = 'Sign Up';
+
+
     return (
-        <form className="" onSubmit={handleSubmit}>
-            <h1>Login</h1>
-            <p>
-                Username <input type="text" onChange={e => setUsername(e.target.value)}/>
-            </p>
-            <p>
-                Password <input type="password" onChange={e => setPassword(e.target.value)}/>
-            </p>
-            <p>
-                <button>Login</button>
-            </p>
-            <p>
-                Need a account? <Link to='/register'>Register Here</Link>
-            </p>
-        </form>
+
+        <Form cta={cta} ctaMain={ctaMain} msg={msg} linkBtn={linkBtn} btnMsg={btnMsg}
+              signIn={false} handleSubmit={handleSubmit} setUsername={setUsername}
+              setPassword={setPassword}
+        />
+
     )
 }
 

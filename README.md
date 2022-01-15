@@ -49,6 +49,13 @@ Style-components
 Other can be seen on the package.json file
 
 
+##Usage 
+
+Initiate backend
+
+ uvicorn main:app --reload 
+
+
 ### Credits
 
 The core of the application
