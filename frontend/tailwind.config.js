@@ -8,7 +8,9 @@ module.exports = {
         'white': '#ffffff',
         'gray': '#E9EAEB',
         'metal': '#5A5C62',
-        'black': '#2C2F33'
+        'black': '#2C2F33',
+        'secgray':'#B3AFAC',
+        'priyellow': '#F8C16B'
       },
     },
   },

@@ -137,7 +137,7 @@ function Board(props) {
                                 <Container
                                     {...provided.droppableProps} ref={provided.innerRef}>
                                     <div className="flex justify-between max-w-screen-xl items-center min-w-xs gap-8 mt-16 mb-4" >
-                                        <p className="font-bold">PROJECT NAME</p>
+                                        <p className="font-bold text-xl">Project's Name</p>
                                         <AddColumn board={board} setBoard={setBoard}/>
                                     </div>
                                     <div className="flex flex-col gap-8 md:flex-row  max-w-screen-xl overflow-auto md:items-start
