@@ -9,9 +9,19 @@ allowing to create columns and tasks. As a result, it's extremely customizable.
 
 ## DEMO
 
-![kaban-board-print](https://user-images.githubusercontent.com/39144691/149261465-e5e53b98-40a6-44ea-976f-32fa3cf7557f.png)
+### Board
+<center> <img src="https://i.giphy.com/YgMnK6Yi5d2gZnrOIg.gif" alt="demo-video" width="700"> </center>
 
-<img src="https://i.giphy.com/d8R6hPfMI1aTldwIsr.gif" width="660">
+### Login and Register
+<center> <img src="https://i.giphy.com/yCxsBIM3ZaYK5L5SD6.gif" alt="demo-video" width="700"> </center>
+
+### Screenshots
+![register](https://user-images.githubusercontent.com/39144691/150373158-e0f66c23-d36a-47d1-bb7a-27882e3ea7b7.png)
+
+![login](https://user-images.githubusercontent.com/39144691/150373165-b308a9fc-b79c-4eec-b96b-0dfa81a1cbc5.png)
+
+![Kaban-Board](https://user-images.githubusercontent.com/39144691/150373170-956e3d23-aea8-459a-9bc6-b2fbac859fbf.png)
+
 
 
 ### REST API Swagger Docs With FastAPI
@@ -49,7 +59,7 @@ Style-components
 Other can be seen on the package.json file
 
 
-##Usage 
+## Usage 
 
 Initiate backend
 

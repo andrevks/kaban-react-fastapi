@@ -10,7 +10,7 @@ function AppBar(){
                 <Logout/>
                 <p className="hidden md:flex text-white text-lg font-bold">
 
-                    <span className="text-yellow-300">EASY</span> KANBAN</p>
+                    <span className="text-yellow-300">EASY</span>KANBAN</p>
                 <p className=" text-yellow-300">Username</p>
             </div>
         </nav>

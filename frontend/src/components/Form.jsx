@@ -8,13 +8,17 @@ function Form({cta, ctaMain, msg, btnMsg, linkBtn, signIn, handleSubmit, setUser
         <div className="flex h-screen bg-black justify-center items-center">
             <img src={background} className="absolute -z-1"  alt="background"/>
             <div className="flex justify-around bg-black h-96 py-10 px-4 w-11/12 max-w-3xl rounded-2xl relative" >
-                <p className={`absolute top-5 right-10 font-bold  rounded-md ${signIn?'bg-metal px-2 py-1 text-white': 'text-gray'}`}>Sign In</p>
-                <p className={`absolute top-5 left-10 font-bold  rounded-md ${signIn?'text-gray':'bg-metal px-2 py-1 text-white'}`}>Sign Up</p>
+                <p className={`absolute top-5 right-10 font-bold  rounded-md ${signIn?'text-gray':'bg-metal px-2 py-1 text-white'}`}>Sign In</p>
+                <p className={`absolute top-5 left-10 font-bold  rounded-md ${signIn?'bg-metal px-2 py-1 text-white': 'text-gray'}`}>Sign Up</p>
+
             <div className="flex flex-1 flex-col justify-center text-white pl-10 font-bold text-2xl">
                 {cta.map(
                     (sentence) =><p className="break-words">{sentence}</p>
                 )}
-                <p className="text-yellow-300 text-5xl ">{ctaMain}</p>
+
+                {ctaMain.map(
+                        (word) => <p className="text-yellow-300 text-5xl "> {word}</p>
+                )}
             </div>
             <form className="relative flex flex-1 flex-col gap-6 justify-center items-center" onSubmit={handleSubmit}>
                 <p>

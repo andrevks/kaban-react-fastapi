@@ -55,7 +55,7 @@ function Column(props) {
 
                         <Droppable droppableId={props.column.id}  type="task" >
                             {provided => (
-                                <TaskList className="flex-1 w-full bg-metal pt-3 px-1.5 rounded-md md:w-48 font-bold"
+                                <TaskList className="flex-1 w-full bg-metal pt-3 px-1.5 rounded-md md:w-56 font-bold"
                                     {...provided.droppableProps} ref={provided.innerRef}>
                                     {
                                         props.tasks.map((task, index) =>

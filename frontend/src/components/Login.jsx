@@ -40,7 +40,7 @@ function Login(props){
     }
 
     const cta= ['Project','managment', 'never been so'];
-    const ctaMain = 'EASY';
+    const ctaMain = ['EASY'];
     const msg = ['Need a ',' account?'];
     const linkBtn = '/register';
     const btnMsg = 'Sign Up';
