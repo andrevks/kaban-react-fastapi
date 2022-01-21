@@ -73,7 +73,12 @@ _Others can be seen on the package.json file_
 $ git clone https://github.com/andrevks/kaban-react-fastapi.git && cd kaban-react-fastapi
 
 # Initiate backend
+$ cd backend
 $ uvicorn main:app --reload
+
+# Initiate frontend
+$ cd frontend
+$ npm start run 
 ```
 
 ## 📚 Credits
