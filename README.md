@@ -26,11 +26,11 @@ allowing to create columns and tasks. As a result, it's extremely customizable.
 
 ### Board
 
-<p align="center"><img src="https://i.giphy.com/YgMnK6Yi5d2gZnrOIg.gif" alt="demo-video" width="700"></p>
+<p align="center"><img src="https://i.giphy.com/YgMnK6Yi5d2gZnrOIg.gif" alt="demo-video" width="600"></p>
 
 ### Login and Register
 
-<p align="center"><img src="https://i.giphy.com/yCxsBIM3ZaYK5L5SD6.gif" alt="demo-video" width="700"></p>
+<p align="center"><img src="https://i.giphy.com/yCxsBIM3ZaYK5L5SD6.gif" alt="demo-video" width="600"></p>
 
 ### Screenshots
 
